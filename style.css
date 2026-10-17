@@ -1,0 +1,1977 @@
+/* ==========================================================================
+   Balık Hırsızı Kedi - Stil Dosyası (style.css)
+   Sıcak, sevimli, modern pastel renk paleti ve akıcı mikro-etkileşimler
+   ========================================================================== */
+
+:root {
+  --bg-creamy: #FAF7F2;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #F4EFE6;
+  
+  --primary-coral: #FF6B4A;
+  --primary-orange: #F4A261;
+  --primary-amber: #FFB703;
+  --accent-teal: #2EC4B6;
+  --accent-blue: #457B9D;
+  --accent-navy: #1D3557;
+  --accent-pink: #FF85A1;
+  
+  --text-main: #2B2D42;
+  --text-muted: #6C757D;
+  --text-light: #8D99AE;
+  
+  --color-success: #2A9D8F;
+  --color-error: #E63946;
+  
+  --shadow-sm: 0 2px 8px rgba(43, 45, 66, 0.06);
+  --shadow-md: 0 8px 24px rgba(43, 45, 66, 0.08);
+  --shadow-lg: 0 16px 36px rgba(43, 45, 66, 0.12);
+  --shadow-card: 0 6px 20px rgba(244, 162, 97, 0.12);
+  
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-fun: 'Fredoka', cursive, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+body {
+  font-family: var(--font-main);
+  background: #ECE5D8;
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Üst Geliştirici & Önizleme Barı (Toolbar)
+   ========================================================================== */
+.dev-toolbar {
+  width: 100%;
+  max-width: 900px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  margin-top: 8px;
+}
+
+.dev-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-family: var(--font-fun);
+}
+
+.app-logo {
+  font-size: 20px;
+}
+
+.badge-v {
+  background: var(--primary-coral);
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-family: var(--font-main);
+  font-weight: 700;
+}
+
+.dev-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.tool-btn {
+  background: #FFFFFF;
+  border: 1.5px solid #DDD6C8;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.tool-btn:hover {
+  background: #FDFBF7;
+  border-color: var(--primary-coral);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Mobil Cihaz Çerçevesi (iPhone / Android Mockup)
+   ========================================================================== */
+.device-viewport-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+}
+
+.mobile-phone-frame {
+  width: 412px;
+  height: 846px;
+  background: #111418;
+  border-radius: 52px;
+  padding: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25), 0 0 0 3px #3A3E45, 0 0 0 7px #212429;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Tam Ekran Modu (Çerçeveyi Kaldır) */
+body.frameless-mode .mobile-phone-frame {
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  border: none;
+}
+
+body.frameless-mode .phone-dynamic-island {
+  display: none;
+}
+
+/* Dynamic Island Çentiği */
+.phone-dynamic-island {
+  position: absolute;
+  top: 19px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 26px;
+  background: #000000;
+  border-radius: 20px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+}
+
+.island-camera {
+  width: 10px;
+  height: 10px;
+  background: #1C2331;
+  border-radius: 50%;
+  border: 1px solid #2B3245;
+}
+
+.island-speaker {
+  width: 32px;
+  height: 4px;
+  background: #222;
+  border-radius: 2px;
+}
+
+/* Telefon Ekran İçeriği */
+.mobile-screen-content {
+  flex: 1;
+  background: var(--bg-creamy);
+  border-radius: 42px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+body.frameless-mode .mobile-screen-content {
+  border-radius: 0;
+}
+
+/* Durum Çubuğu */
+.phone-status-bar {
+  height: 44px;
+  padding: 12px 24px 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  z-index: 50;
+}
+
+.phone-status-icons {
+  display: flex;
+  gap: 4px;
+  font-size: 11px;
+}
+
+/* ==========================================================================
+   Üst Bilgi Barı (App Header Stats)
+   ========================================================================== */
+.app-top-header {
+  padding: 4px 16px 10px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-creamy);
+  z-index: 40;
+}
+
+.stat-pill-group {
+  display: flex;
+  gap: 8px;
+  background: #FFFFFF;
+  padding: 6px 12px;
+  border-radius: 30px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(220, 210, 195, 0.4);
+}
+
+.header-stat-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 12px;
+}
+
+.weight-chip {
+  color: #E76F51;
+}
+
+.fish-chip {
+  color: #2A9D8F;
+}
+
+.streak-chip {
+  color: #E63946;
+}
+
+/* ==========================================================================
+   Ana Dinamik Görünüm Alanı (Viewport)
+   ========================================================================== */
+.app-main-viewport {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  scroll-behavior: smooth;
+  padding-bottom: 20px;
+}
+
+.app-main-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-page {
+  display: none;
+  min-height: 100%;
+}
+
+.tab-page.active {
+  display: block;
+}
+
+.fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   Alt Gezinme Barı (Bottom Navigation)
+   ========================================================================== */
+.app-bottom-navbar {
+  height: 64px;
+  background: #FFFFFF;
+  border-top: 1px solid rgba(220, 210, 195, 0.5);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 6px;
+  box-shadow: 0 -4px 16px rgba(43, 45, 66, 0.04);
+  z-index: 80;
+}
+
+.nav-item {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+
+.nav-item .nav-icon {
+  font-size: 20px;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-item .nav-text {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.nav-item.active {
+  color: var(--primary-coral);
+}
+
+.nav-item.active .nav-icon {
+  transform: translateY(-2px) scale(1.15);
+}
+
+.heist-nav-highlight {
+  position: relative;
+}
+
+.heist-nav-highlight.active .nav-icon {
+  filter: drop-shadow(0 2px 6px rgba(244, 162, 97, 0.5));
+}
+
+.phone-home-indicator {
+  height: 18px;
+  background: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 6px;
+}
+
+.phone-home-indicator::after {
+  content: '';
+  width: 120px;
+  height: 4px;
+  background: #2B2D42;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   TAB 1: KAMP (HOME SCREEN)
+   ========================================================================== */
+.home-screen {
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.home-greeting-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.greeting-text h2 {
+  font-family: var(--font-fun);
+  font-size: 20px;
+  color: var(--text-main);
+}
+
+.greeting-text p {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.streak-badge {
+  background: #FFE8D6;
+  border: 1px solid #F4A261;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 800;
+  font-size: 13px;
+  color: #D62828;
+}
+
+/* Kedi Vitrin Kartı */
+.cat-display-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(244, 162, 97, 0.15);
+  position: relative;
+}
+
+.cat-status-pill {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.status-fit { background: #E8F8F5; color: #2A9D8F; }
+.status-soft { background: #FFF3CD; color: #D4A373; }
+.status-chonk { background: #FFE8D6; color: #E76F51; }
+.status-megachonk { background: #FFDDE2; color: #E63946; }
+
+.cat-visual-wrap {
+  width: 170px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cat-avatar-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 6px 12px rgba(43, 45, 66, 0.08));
+}
+
+.purr-bounce {
+  animation: purrBounce 0.5s ease-in-out;
+}
+
+@keyframes purrBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08) translateY(-4px); }
+}
+
+/* Kilo Çubuğu */
+.chonk-meter-wrap {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.chonk-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+
+.chonk-track {
+  width: 100%;
+  height: 8px;
+  background: #F0ECE4;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.chonk-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2A9D8F, #E9C46A, #E76F51, #E63946);
+  border-radius: 6px;
+  transition: width 0.4s ease;
+}
+
+.cat-interaction-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  width: 100%;
+}
+
+.action-pill-btn {
+  flex: 1;
+  background: #FFF1E6;
+  border: 1px solid #F4A261;
+  color: #C85A32;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-pill-btn:hover {
+  background: #FFE5D4;
+}
+
+.action-pill-btn.secondary {
+  background: #E8F8F5;
+  border-color: #2EC4B6;
+  color: #1B7A70;
+}
+
+/* 10 Kelimelik Paket Kartı */
+.active-pack-card {
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFFFFF 100%);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  border: 1.5px solid #F6D6C2;
+}
+
+.pack-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.pack-tag {
+  background: var(--primary-coral);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.pack-count {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.active-pack-card h3 {
+  font-family: var(--font-fun);
+  font-size: 17px;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.pack-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.pack-stats-row {
+  display: flex;
+  justify-content: space-between;
+  background: #FDFBF7;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 14px;
+  font-size: 12px;
+}
+
+.pack-btn-row {
+  display: flex;
+  gap: 8px;
+}
+
+.primary-btn-large {
+  flex: 2;
+  background: var(--primary-coral);
+  color: #FFFFFF;
+  border: none;
+  font-family: var(--font-fun);
+  font-size: 15px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255, 107, 74, 0.35);
+  transition: all 0.2s ease;
+}
+
+.primary-btn-large:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 107, 74, 0.45);
+}
+
+.heist-direct-btn {
+  flex: 1;
+  background: var(--accent-navy);
+  color: #FFFFFF;
+  border: none;
+  font-family: var(--font-fun);
+  font-size: 14px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.heist-direct-btn:hover {
+  background: #264653;
+}
+
+/* Hızlı Kısayol Kartları */
+.quick-nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.quick-card {
+  background: #FFFFFF;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  border: 1px solid #EBE5D9;
+  transition: all 0.2s ease;
+}
+
+.quick-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-orange);
+}
+
+.q-icon {
+  font-size: 24px;
+}
+
+.q-info strong {
+  display: block;
+  font-size: 12px;
+  color: var(--text-main);
+}
+
+.q-info small {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   TAB 2: FLASHCARD 3D DESTE (CARDS)
+   ========================================================================== */
+.cards-screen {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: calc(846px - 140px);
+}
+
+.cards-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pack-title-pill {
+  font-family: var(--font-fun);
+  font-size: 13px;
+  color: var(--text-main);
+  background: #FFFFFF;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #E2D9CB;
+}
+
+.card-counter {
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--primary-coral);
+}
+
+/* 3D Dönen Flashcard Kutusu */
+.flashcard-container {
+  perspective: 1000px;
+  width: 100%;
+  height: 380px;
+  margin: 6px 0;
+}
+
+.flashcard {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.flashcard.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 12px 30px rgba(43, 45, 66, 0.1);
+  border: 2px solid #EFE8DC;
+}
+
+.card-front {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%);
+}
+
+.card-back {
+  background: linear-gradient(180deg, #F0F8F6 0%, #FFFFFF 100%);
+  transform: rotateY(180deg);
+  border-color: #CBEAE3;
+}
+
+.card-hint-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-light);
+  background: rgba(141, 153, 174, 0.1);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.word-visual-icon {
+  font-size: 56px;
+  margin: 8px 0;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
+}
+
+.card-english-word {
+  font-family: var(--font-fun);
+  font-size: 34px;
+  color: var(--accent-navy);
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.card-phonetic-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: -4px;
+}
+
+.phonetic-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.pos-tag {
+  font-size: 11px;
+  font-weight: 700;
+  background: #E8F0FE;
+  color: #1A73E8;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.sound-bubble-btn {
+  background: var(--primary-coral);
+  color: #fff;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 3px 8px rgba(255, 107, 74, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.sound-bubble-btn:hover {
+  transform: scale(1.15);
+}
+
+.card-sentence-box {
+  background: #FDFBF7;
+  border: 1px dashed #DCD2C3;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  width: 100%;
+}
+
+.sentence-en {
+  font-size: 13px;
+  color: var(--text-main);
+  text-align: center;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Kart Arka Yüz */
+.back-accent-icon {
+  font-size: 40px;
+}
+
+.card-turkish-meaning {
+  font-family: var(--font-fun);
+  font-size: 28px;
+  color: var(--color-success);
+  text-align: center;
+}
+
+.back-sentence-tr {
+  background: #FFFFFF;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  width: 100%;
+  border: 1px solid #D6EAE5;
+}
+
+.sentence-tr-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 2px;
+}
+
+.sentence-tr {
+  font-size: 12px;
+  color: var(--text-main);
+  font-style: italic;
+}
+
+.card-memory-hint {
+  background: #FFF9E6;
+  border: 1px solid #FFE3A8;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  width: 100%;
+}
+
+.hint-title {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  color: #D4A373;
+  margin-bottom: 2px;
+}
+
+.hint-body {
+  font-size: 12px;
+  color: #7A583A;
+  line-height: 1.35;
+}
+
+/* Kart Alt Kontrolleri */
+.cards-action-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-nav-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.nav-arrow-btn {
+  flex: 1;
+  background: #FFFFFF;
+  border: 1.5px solid #DDD6C8;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--text-main);
+  transition: all 0.2s ease;
+}
+
+.nav-arrow-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.nav-flip-btn {
+  flex: 1.5;
+  background: #E8F4F8;
+  border: 1.5px solid #A8DADC;
+  color: #1D3557;
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.heist-cta-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #1D3557 0%, #2A9D8F 100%);
+  color: #FFFFFF;
+  border: none;
+  font-family: var(--font-fun);
+  font-size: 15px;
+  padding: 13px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(29, 53, 87, 0.3);
+  transition: all 0.2s ease;
+}
+
+.heist-cta-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   TAB 3: BALIK AVI (THE FISH BUCKET HEIST)
+   ========================================================================== */
+.heist-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.heist-topbar {
+  padding: 10px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0E1724;
+  color: #FFFFFF;
+}
+
+.heist-lives {
+  display: flex;
+  gap: 4px;
+  font-size: 18px;
+}
+
+.life-paw.lost {
+  opacity: 0.4;
+  filter: grayscale(1);
+}
+
+.heist-step-badge {
+  font-family: var(--font-fun);
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.heist-step-badge .step-num {
+  color: #FFB703;
+  font-weight: 800;
+}
+
+.heist-exit-btn {
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+/* Rıhtım İskele Sahnesi */
+.heist-stage {
+  height: 190px;
+  background: linear-gradient(180deg, #0E1724 0%, #19273A 70%, #20334D 100%);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid #4A3326;
+}
+
+.night-sky {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  color: #F8F9FA;
+}
+
+.moon { font-size: 24px; }
+.star { position: absolute; color: #FFD166; font-size: 10px; opacity: 0.8; }
+.s1 { top: 6px; left: 60px; animation: twinkle 1.5s infinite alternate; }
+.s2 { top: 25px; left: 120px; animation: twinkle 2s infinite alternate; }
+
+@keyframes twinkle {
+  from { opacity: 0.3; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1.2); }
+}
+
+.pier-deck {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 28px;
+  background: #6D4C41;
+  border-top: 3px solid #8D6E63;
+}
+
+/* Süzülen Kedi */
+.cat-sneaker {
+  position: absolute;
+  bottom: 22px;
+  width: 75px;
+  height: 60px;
+  transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 20;
+}
+
+.cat-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cat-tail {
+  transform-origin: 15px 50px;
+  animation: tailWag 2s ease-in-out infinite alternate;
+}
+
+@keyframes tailWag {
+  0% { transform: rotate(-8deg); }
+  100% { transform: rotate(14deg); }
+}
+
+.cat-step-anim {
+  animation: catStep 0.4s ease;
+}
+
+@keyframes catStep {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px) scale(1.05); }
+  100% { transform: translateY(0); }
+}
+
+.cat-flee-anim {
+  animation: catFlee 0.8s ease-in forwards;
+}
+
+@keyframes catFlee {
+  0% { transform: scaleX(1); }
+  20% { transform: scaleX(-1); }
+  100% { transform: scaleX(-1) translateX(300px); opacity: 0; }
+}
+
+/* Balıkçı ve Kova Bölgesi */
+.fisherman-zone {
+  position: absolute;
+  right: 12px;
+  bottom: 22px;
+  width: 100px;
+  height: 120px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.fisherman-sprite {
+  width: 70px;
+  height: 85px;
+}
+
+.fisherman-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.snore-bubble {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-family: var(--font-fun);
+  font-size: 12px;
+  color: #1D3557;
+  font-weight: 700;
+  animation: snoreFloat 2.5s infinite ease-in-out;
+}
+
+@keyframes snoreFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.1); }
+}
+
+.bubble-alert {
+  background: #E63946 !important;
+  color: #fff !important;
+  animation: alertPulse 0.3s infinite alternate !important;
+}
+
+@keyframes alertPulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.25); }
+}
+
+.shake-alarm {
+  animation: fishermanWake 0.6s ease-in-out;
+}
+
+@keyframes fishermanWake {
+  0%, 100% { transform: rotate(0); }
+  20% { transform: rotate(-6deg) translateY(-4px); }
+  40% { transform: rotate(6deg) translateY(-2px); }
+  60% { transform: rotate(-4deg); }
+  80% { transform: rotate(4deg); }
+}
+
+.bucket-sprite {
+  position: absolute;
+  right: 65px;
+  bottom: 0px;
+  width: 42px;
+  height: 50px;
+}
+
+.bucket-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.fish-glow {
+  animation: fishSparkle 1.8s infinite alternate;
+}
+
+@keyframes fishSparkle {
+  from { filter: drop-shadow(0 0 2px #E63946); }
+  to { filter: drop-shadow(0 0 8px #FFD166); }
+}
+
+/* Soru ve Şıklar Alanı */
+.heist-card-area {
+  flex: 1;
+  padding: 16px 18px;
+  background: var(--bg-creamy);
+  display: flex;
+  flex-direction: column;
+}
+
+.quiz-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quiz-tag {
+  font-size: 11px;
+  font-weight: 800;
+  background: #E8F0FE;
+  color: #1A73E8;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.quiz-speak-btn {
+  background: #FFFFFF;
+  border: 1px solid #DDD6C8;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 14px;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+.quiz-prompt {
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  border: 1.5px solid #EBE4D8;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.quiz-target-text {
+  font-family: var(--font-fun);
+  font-size: 24px;
+  color: var(--accent-navy);
+}
+
+.quiz-subtext {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quiz-opt-btn {
+  background: #FFFFFF;
+  border: 2px solid #E5DED2;
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+  text-align: left;
+  transition: all 0.15s ease;
+}
+
+.quiz-opt-btn:hover {
+  border-color: var(--primary-coral);
+  background: #FFFDF9;
+}
+
+.opt-key {
+  width: 26px;
+  height: 26px;
+  background: #F4EFE6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+
+.quiz-opt-btn.correct-btn {
+  background: #E8F8F5 !important;
+  border-color: #2A9D8F !important;
+  color: #1B7A70 !important;
+  transform: scale(1.02);
+}
+
+.quiz-opt-btn.wrong-btn {
+  background: #FDF0F0 !important;
+  border-color: #E63946 !important;
+  color: #C1121F !important;
+  animation: shakeOpt 0.3s ease;
+}
+
+.quiz-opt-btn.reveal-correct-btn {
+  background: #E8F8F5 !important;
+  border-color: #2A9D8F !important;
+}
+
+@keyframes shakeOpt {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* Zafer & Kayıp Ekranları */
+.heist-result-box {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  border: 2px solid #EFE8DC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.result-icon-celebrate { font-size: 48px; }
+.result-icon-alarm { font-size: 48px; }
+
+.heist-result-box h2 {
+  font-family: var(--font-fun);
+  font-size: 22px;
+  color: var(--text-main);
+}
+
+.result-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.result-stats {
+  display: flex;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.stat-pill {
+  background: #E8F8F5;
+  color: #2A9D8F;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.stat-pill.chonk-gain {
+  background: #FFE8D6;
+  color: #E76F51;
+}
+
+.primary-action-btn {
+  width: 100%;
+  background: var(--primary-coral);
+  color: #fff;
+  border: none;
+  font-family: var(--font-fun);
+  font-size: 16px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255, 107, 74, 0.35);
+}
+
+.secondary-action-btn {
+  background: var(--accent-navy);
+  color: #fff;
+  border: none;
+  font-family: var(--font-fun);
+  font-size: 14px;
+  padding: 11px 18px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.secondary-action-btn.outline {
+  background: none;
+  border: 1.5px solid #DDD6C8;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   TAB 4: KEDİ SPOR SALONU (GYM / SPACED REPETITION)
+   ========================================================================== */
+.gym-screen {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.gym-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gym-badge {
+  font-family: var(--font-fun);
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.gym-scale-pill {
+  background: #FFF0E6;
+  border: 1px solid #F4A261;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #C85A32;
+}
+
+.gym-stage {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+  border: 1.5px solid #EBE5D9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gym-backdrop {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-light);
+  margin-bottom: 6px;
+}
+
+.cat-workout-container {
+  width: 180px;
+  height: 140px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-gym-sprite {
+  width: 100%;
+  height: 100%;
+  animation: workoutBounce 0.8s infinite alternate ease-in-out;
+}
+
+.workout-boost {
+  animation: workoutSuper 0.5s ease !important;
+}
+
+@keyframes workoutBounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+@keyframes workoutSuper {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15) translateY(-10px); }
+}
+
+.sweat-drop {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  font-size: 18px;
+  opacity: 0;
+}
+
+.sweat-splash {
+  animation: sweatPop 0.6s ease-out forwards;
+}
+
+@keyframes sweatPop {
+  0% { opacity: 1; transform: translateY(0) scale(0.6); }
+  100% { opacity: 0; transform: translateY(-16px) scale(1.3); }
+}
+
+.treadmill-stripes {
+  animation: treadmillMove 0.4s linear infinite;
+}
+
+@keyframes treadmillMove {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 8; }
+}
+
+.gym-rep-meter {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.rep-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.rep-progress-track {
+  width: 100%;
+  height: 8px;
+  background: #EBE5D9;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.rep-progress-bar {
+  height: 100%;
+  background: var(--accent-teal);
+  transition: width 0.3s ease;
+}
+
+.gym-quiz-box {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  border: 1.5px solid #EBE5D9;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gym-word-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.gym-target-word {
+  font-family: var(--font-fun);
+  font-size: 26px;
+  color: var(--accent-navy);
+}
+
+.gym-example-prompt {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.gym-instruction {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-coral);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.gym-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.gym-opt-btn {
+  background: #FDFBF7;
+  border: 1.5px solid #E2D9CB;
+  padding: 12px 10px;
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.gym-opt-btn:hover {
+  border-color: var(--accent-teal);
+  background: #FFFFFF;
+}
+
+/* ==========================================================================
+   TAB 5: GARDIROP & KOSTÜMLER (WARDROBE)
+   ========================================================================== */
+.wardrobe-screen {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.wardrobe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wardrobe-header h2 {
+  font-family: var(--font-fun);
+  font-size: 20px;
+}
+
+.fish-currency-pill {
+  background: #E8F8F5;
+  border: 1px solid #2EC4B6;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 13px;
+  color: #1B7A70;
+}
+
+.wardrobe-preview-box {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid #EBE5D9;
+}
+
+.preview-cat-avatar {
+  width: 150px;
+  height: 125px;
+}
+
+.preview-cat-caption {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.accessory-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.acc-card {
+  background: #FFFFFF;
+  border: 1.5px solid #E6DFD2;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.acc-card.equipped {
+  border-color: var(--accent-teal);
+  background: #F4FBF9;
+}
+
+.acc-icon {
+  font-size: 28px;
+}
+
+.acc-info {
+  flex: 1;
+}
+
+.acc-name {
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+.acc-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin: 2px 0;
+}
+
+.acc-price {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-coral);
+}
+
+.acc-action-btn {
+  background: var(--primary-coral);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.acc-action-btn.btn-equipped {
+  background: #2EC4B6;
+}
+
+/* ==========================================================================
+   TAB 6: ARKADAŞLAR & KEDİ ÇETESİ (FRIENDS)
+   ========================================================================== */
+.friends-screen {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.friends-header h2 {
+  font-family: var(--font-fun);
+  font-size: 20px;
+}
+
+.friends-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.team-goal-card {
+  background: linear-gradient(135deg, #1D3557 0%, #2A9D8F 100%);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.goal-tag {
+  font-size: 10px;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+
+.goal-title {
+  font-family: var(--font-fun);
+  font-size: 15px;
+  margin: 6px 0 2px 0;
+}
+
+.goal-reward {
+  font-size: 11px;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.goal-progress-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.goal-bar-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.goal-bar-fill {
+  height: 100%;
+  background: #FFD166;
+  border-radius: 6px;
+}
+
+.goal-progress-text {
+  font-size: 10px;
+  font-weight: 700;
+  text-align: right;
+  opacity: 0.9;
+}
+
+.friends-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.friend-card {
+  background: #FFFFFF;
+  border: 1.5px solid #E6DFD2;
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.friend-card.my-card {
+  border-color: #F4A261;
+  background: #FFFDF9;
+}
+
+.friend-rank {
+  font-family: var(--font-fun);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-light);
+  width: 16px;
+}
+
+.friend-avatar {
+  font-size: 26px;
+}
+
+.friend-details {
+  flex: 1;
+}
+
+.friend-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.cat-tag {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.friend-bottom {
+  display: flex;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 3px;
+}
+
+.nudge-btn {
+  background: #FFF0E6;
+  border: 1px solid #F4A261;
+  color: #C85A32;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.you-badge {
+  font-size: 11px;
+  font-weight: 800;
+  background: #FFE8D6;
+  color: #C85A32;
+  padding: 4px 8px;
+  border-radius: 10px;
+}
+
+.friends-footer-tip {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   TAB 7: KELİME AKVARYUMU & SÖZLÜK (LIBRARY)
+   ========================================================================== */
+.library-screen {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.library-header h2 {
+  font-family: var(--font-fun);
+  font-size: 20px;
+}
+
+.library-header p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.library-summary-bar {
+  display: flex;
+  gap: 8px;
+}
+
+.summary-pill {
+  background: #FFFFFF;
+  border: 1.5px solid #DDD6C8;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.summary-pill.active {
+  border-color: var(--accent-navy);
+  color: var(--accent-navy);
+}
+
+.summary-pill.learned-pill {
+  border-color: #2EC4B6;
+  color: #1B7A70;
+  background: #F0FBF9;
+}
+
+.library-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.library-item-card {
+  background: #FFFFFF;
+  border: 1.5px solid #EBE5D9;
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.library-item-card.is-learned {
+  border-color: #BBE5DD;
+  background: #FAFCFB;
+}
+
+.lib-icon {
+  font-size: 26px;
+}
+
+.lib-info {
+  flex: 1;
+}
+
+.lib-word-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.lib-word {
+  font-size: 15px;
+  color: var(--text-main);
+}
+
+.lib-phonetic {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.learned-tag {
+  font-size: 10px;
+  font-weight: 800;
+  background: #E8F8F5;
+  color: #2A9D8F;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.pending-tag {
+  font-size: 10px;
+  font-weight: 700;
+  background: #FFF0E6;
+  color: #E76F51;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.lib-meaning {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.lib-sentence {
+  font-size: 11px;
+  color: var(--text-light);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.lib-speak-btn {
+  background: #F4EFE6;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  transition: transform 0.2s ease;
+}
+
+.lib-speak-btn:hover {
+  transform: scale(1.15);
+  background: var(--primary-coral);
+  color: #fff;
+}
